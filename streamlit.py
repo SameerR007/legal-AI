@@ -6,7 +6,14 @@ import google.generativeai as genai
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
-st.title("Legal Assistant")
+st.title("Indian Civil Law Assistant: Legal Queries Made Easy")
+
+st.write("""
+Welcome to the **Indian Civil Law Assistant**, your go-to platform for resolving legal queries related to civil laws in India.
+Ask questions regarding contracts, property disputes, family law, consumer rights, and more — all based on the latest Indian legal statutes and precedents.
+Get concise, reliable, and up-to-date answers to help you navigate your legal issues.
+""")
+
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 embeddings=GoogleGenerativeAIEmbeddings(model = "models/embedding-001")
@@ -19,7 +26,7 @@ system_prompt = (
     "Provide a concise answer ONLY BASED ON CONTEXT. If the information is not in context, say 'I don't know'. "
     "List down the references with REFERENCES - format at the end of each response"
     "\n\n"
-    "CONTEXT: {context}"
+    "{context}"
 )
 
 from langchain.chains import create_history_aware_retriever
@@ -30,8 +37,7 @@ contextualize_q_system_prompt = (
     "which might reference context in the chat history, "
     "formulate a standalone question which can be understood "
     "without the chat history. Do NOT answer the question, "
-    "just reformulate it if needed and otherwise return it as is. ONLY answer questions that are related to Indian civil law"
-    "List down the references with REFERENCES - format at the end of each response"
+    "just reformulate it if needed and otherwise return it as is."
 )
 
 contextualize_q_prompt = ChatPromptTemplate.from_messages(
