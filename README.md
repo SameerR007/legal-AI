@@ -18,7 +18,7 @@ The data that the assistant uses for context is currently focused on civil laws.
 
 The Legal Assistant is accessible through a Streamlit web application. Click on the link below to access the app and start making queries related to Indian civil law:
 
-👉 [Open Legal Assistant on Streamlit](https://sameerrawat07-legalai.hf.space/)
+[Open Legal Assistant on Streamlit](https://sameerrawat07-legalai.hf.space/)
 
 - Enter your legal queries in the input box.
 - The assistant will process the query using the RAG pipeline and provide a relevant response based on its knowledge base.
